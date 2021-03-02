@@ -12,6 +12,9 @@ Below are displayed the training curves of the U-Net with 4 blocks of depth, wit
 </p>
 
 ## `UNet.py`
+The UNet \[1\] is a neural network architecture used for segmentation shaped like an U where the feature maps coming from the left side of the U are passed to the right side to produce the segmentation mask exploiting information from different points of the image elaboration and at different scales.
+
+The implementation in 
 
 ## `DiceLoss.py`
 The Dice Loss is a criterion for image segmentation that uses the Sørensen–Dice coefficient between the true segmentation mask and the predicted one \[2\]. It is implemented as follows:
