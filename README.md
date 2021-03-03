@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="images/examples.png" width="800" title="Examples" />
+    <img src="images/examples.png" width="600" title="Examples" />
 </p>
 
-# Brain-MRI-segmentation
+# Brain MRI segmentation
 Tumor segmentation in brain MRI using U-Net \[1\] optimized with the Dice Loss \[2]. The dataset is available from this [repository](https://github.com/giacomodeodato/BrainMRIDataset).
 
 Below are displayed the training curves of the U-Net with 4 blocks of depth, with a fixed number of hidden features equal to 32. The model has been optimized using Adam with a learning rate of 1e-4 for 150 epochs and a learning rate step with gamma = 0.1 at epoch 30. The training code is available in this [notebook](https://github.com/giacomodeodato/Brain-MRI-segmentation/blob/main/BrainMRISegmentation/Brain_MRI_Segmentation.ipynb).
@@ -12,9 +12,9 @@ Below are displayed the training curves of the U-Net with 4 blocks of depth, wit
 </p>
 
 ## `UNet.py`
-The UNet \[1\] is a neural network architecture used for segmentation shaped like an U where the feature maps coming from the left side of the U are passed to the right side to produce the segmentation mask exploiting information from different points of the image elaboration and at different scales.
+The UNet \[1\] is a neural network architecture used for segmentation. It is shaped like an U where the feature maps coming from the left side of the U (encoder) are passed to the right side (decoder) to produce the segmentation mask by exploiting information from different stages of the image elaboration and at different scales.
 
-The implementation in 
+In order to transfer the features between different layers of the architecture, the `UNet.py` implementation exploits an activations stack and pytorch forward hooks. Moreover, the model initialization is iterative and supports a `depth` parameter that allows to define the architecture with an arbitrary number of blocks. During the initialization a forward hook is added to the encoding layers so that the corresponding activations are pushed in the stack. Then, the forward hook of the decoding layers pops the most recent activation from the stack and concatenates it to the layer output.
 
 ## `DiceLoss.py`
 The Dice Loss is a criterion for image segmentation that uses the Sørensen–Dice coefficient between the true segmentation mask and the predicted one \[2\]. It is implemented as follows:
