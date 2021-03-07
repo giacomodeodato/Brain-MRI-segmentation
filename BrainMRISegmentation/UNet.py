@@ -27,10 +27,6 @@ class UNetBlock(nn.Module):
         out_channels : int
             Number of output channels.
 
-        Returns
-        -------
-        UNetBlock()
-            instance of UNetBlock
         """
 
         super(UNetBlock, self).__init__()
@@ -94,11 +90,7 @@ class UNet(nn.Module):
         depth : int, optional
             Depth of the architecture.
             Default is 5.
-
-        Returns
-        -------
-        UNet()
-            instance of UNet
+            
         """
 
         super(UNet, self).__init__()

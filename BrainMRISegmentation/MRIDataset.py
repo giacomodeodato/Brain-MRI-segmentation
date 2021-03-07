@@ -19,16 +19,11 @@ class MRIDataset(torch.utils.data.Dataset):
             The MRI volume to select among "pre-contrast", "FLAIR" and 
             "post-contrast". Default is None, uses all the volumes.
 
-        Returns
-        -------
-        MRIDataset()
-            instance of MRIDataset
-
         References
         ----------
             [1] https://github.com/giacomodeodato/BrainMRIDataset
 
-            [1] https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation
+            [2] https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation
         """
 
         super(MRIDataset).__init__()
